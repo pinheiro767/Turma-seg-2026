@@ -5,499 +5,696 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>UEM 2026 — Anatomia Aplicada (Ed. Física Noturno) — Calendário + Cronograma</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap');
+
     :root{
-      --bg:#0a0e27;
-      --card:#0f1730;
-      --text:#eef2ff;
-      --muted:#a9b3d1;
-      --line:rgba(255,255,255,.12);
-      --chip:rgba(255,255,255,.08);
-      --accent:#ff3b6b;
-      --ok:#33d6a6;
-      --warn:#f7c948;
-      --holiday:#ff1744;
-      --recesso:#ff6b35;
-      --aula:#00d4ff;
-      --seminario:#a78bfa;
-      --avaliacao:#ff1744;
-      --shadow: 0 14px 40px rgba(0,0,0,.35);
-      --radius: 18px;
+      --bg:#050a1f;
+      --card:#0d1425;
+      --text:#f5f7ff;
+      --text-secondary:#d4daf5;
+      --muted:#8f99c8;
+      --line:rgba(255,255,255,.08);
+      --chip:rgba(255,255,255,.05);
+
+      --aula:#00f0ff;
+      --seminario:#c084fc;
+      --avaliacao:#ff2e71;
+      --exame:#10b981;
+      --holiday:#ff4655;
+      --recesso:#fb923c;
+
+      --shadow: 0 25px 60px rgba(0,0,0,.50);
+      --shadow-sm: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 24px;
     }
+
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0}
+    html,body{height:100%;margin:0;width:100%}
     body{
-      font-family: "Syne", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans";
-      background: radial-gradient(900px 600px at 15% 20%, rgba(0,212,255,.25), transparent 50%), radial-gradient(800px 400px at 85% 10%, rgba(167,139,250,.20), transparent 55%), radial-gradient(700px 500px at 50% 90%, rgba(255,107,53,.12), transparent 60%), linear-gradient(180deg, #0a0e27, #1a1f3a);
+      font-family: "Outfit", -apple-system, system-ui, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(1200px 800px at 8% 20%, rgba(0,240,255,.18), transparent 45%),
+        radial-gradient(1000px 600px at 92% 8%, rgba(192,132,252,.14), transparent 50%),
+        radial-gradient(900px 700px at 50% 100%, rgba(251,146,60,.08), transparent 60%),
+        linear-gradient(180deg, #050a1f 0%, #0d1425 35%, #131f40 70%, #1a2555 100%);
       color:var(--text);
-      padding:16px;
+      padding:32px;
       overflow-x:hidden;
-      animation: bgShift 15s ease-in-out infinite;
+      line-height:1.65;
+      min-height:100vh;
     }
 
-    @keyframes bgShift {
-      0%, 100% { 
-        background: radial-gradient(900px 600px at 15% 20%, rgba(0,212,255,.25), transparent 50%), radial-gradient(800px 400px at 85% 10%, rgba(167,139,250,.20), transparent 55%), radial-gradient(700px 500px at 50% 90%, rgba(255,107,53,.12), transparent 60%), linear-gradient(180deg, #0a0e27, #1a1f3a);
-      }
-      50% { 
-        background: radial-gradient(900px 600px at 20% 30%, rgba(0,212,255,.30), transparent 50%), radial-gradient(800px 400px at 80% 15%, rgba(167,139,250,.25), transparent 55%), radial-gradient(700px 500px at 45% 85%, rgba(255,107,53,.15), transparent 60%), linear-gradient(180deg, #0f1530, #1a1f3a);
-      }
+    @media (max-width: 768px){
+      body{padding:20px}
+    }
+    @media (max-width: 640px){
+      body{padding:14px}
+    }
+    @media (max-width: 480px){
+      body{padding:12px}
+    }
+    @media (max-width: 360px){
+      body{padding:10px}
     }
 
-    @keyframes gridPulse {
-      0%, 100% { opacity: 0.03; }
-      50% { opacity: 0.08; }
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(0deg, transparent 24%, rgba(0,212,255,.08) 25%, rgba(0,212,255,.08) 26%, transparent 27%, transparent 74%, rgba(0,212,255,.08) 75%, rgba(0,212,255,.08) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, rgba(0,212,255,.08) 25%, rgba(0,212,255,.08) 26%, transparent 27%, transparent 74%, rgba(0,212,255,.08) 75%, rgba(0,212,255,.08) 76%, transparent 77%, transparent);
-      background-size: 60px 60px;
-      pointer-events: none;
-      animation: gridPulse 6s ease-in-out infinite;
-      z-index: -1;
-    }
-    .skip-link{
-      position:absolute;
-      top:-40px;
-      left:0;
-      background:#4aa3ff;
-      color:#000;
-      padding:8px 16px;
-      text-decoration:none;
-      border-radius:0 0 4px 0;
-      font-weight:600;
-      z-index:1000;
-    }
-    .skip-link:focus{top:0}
-    .wrap{max-width:1280px;margin:0 auto}
+    .wrap{max-width:1400px;margin:0 auto}
+    
     .hero{
-      border:1px solid rgba(0,212,255,.30);
-      background: linear-gradient(135deg, rgba(0,212,255,.08) 0%, rgba(167,139,250,.06) 50%, rgba(255,107,53,.04) 100%);
+      border:1px solid rgba(0,240,255,.30);
+      background: linear-gradient(135deg, rgba(0,240,255,.07) 0%, rgba(192,132,252,.05) 45%, rgba(251,146,60,.03) 100%);
       border-radius:var(--radius);
-      padding:20px;
-      box-shadow: 0 14px 40px rgba(0,0,0,.35), 0 0 60px rgba(0,212,255,.10);
-      animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      padding:40px;
+      box-shadow: var(--shadow);
+      animation: heroSlideIn 0.8s cubic-bezier(0.34,1.56,0.64,1) both;
     }
 
-    @keyframes slideInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+    @media (max-width: 768px){
+      .hero{padding:24px}
     }
+    @media (max-width: 640px){
+      .hero{padding:18px;border-radius:16px}
+    }
+    @media (max-width: 480px){
+      .hero{padding:14px;border-radius:12px}
+    }
+    @media (max-width: 360px){
+      .hero{padding:12px;border-radius:10px}
+    }
+
+    @keyframes heroSlideIn{
+      from{opacity:0;transform:translateY(-50px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
     h1{
       margin:0;
-      font-size:clamp(18px, 5vw, 24px);
-      line-height:1.3;
-      letter-spacing:.2px;
-      background: linear-gradient(90deg, #00d4ff 0%, #a78bfa 50%, #ff6b35 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradientFlow 8s ease-in-out infinite;
-      font-weight: 800;
+      font-size:clamp(18px, 5vw, 36px);
+      line-height:1.2;
+      background: linear-gradient(135deg, #00f0ff 0%, #c084fc 40%, #fb923c 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      font-weight:900;
+      letter-spacing:-0.8px;
+    }
+    @media (max-width: 480px){
+      h1{font-size:clamp(14px, 4vw, 18px);line-height:1.15;margin-bottom:8px}
+    }
+    @media (max-width: 360px){
+      h1{font-size:13px;letter-spacing:-0.5px}
     }
 
-    @keyframes gradientFlow {
-      0%, 100% { filter: brightness(1); }
-      50% { filter: brightness(1.1); }
-    }
     .sub{
-      margin:12px 0 0;
-      color:var(--muted);
-      font-size:clamp(12px, 2.5vw, 13px);
-      line-height:1.5;
+      margin:16px 0 0;
+      color:var(--text-secondary);
+      font-size:clamp(12px, 2.5vw, 16px);
+      line-height:1.6;
+      opacity:0.92;
+      font-weight:500;
     }
+    @media (max-width: 480px){
+      .sub{margin:10px 0 0;font-size:clamp(10px, 2vw, 12px);line-height:1.4}
+    }
+    @media (max-width: 360px){
+      .sub{font-size:10px;line-height:1.35}
+    }
+
+    .chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+    .chip{
+      font-size:clamp(11px, 2vw, 13px);
+      background:rgba(0,240,255,.10);
+      border:1px solid rgba(0,240,255,.30);
+      padding:clamp(8px, 2vw, 11px) clamp(12px, 3vw, 16px);
+      border-radius:12px;
+      white-space:wrap;
+      transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+      cursor:default;
+      font-weight:600;
+      backdrop-filter:blur(8px);
+      line-height:1.4;
+    }
+    @media (max-width: 480px){
+      .chips{gap:8px;margin-top:14px}
+      .chip{font-size:clamp(9px, 1.8vw, 11px);padding:6px 10px;line-height:1.35}
+    }
+    @media (max-width: 360px){
+      .chips{gap:6px;margin-top:12px}
+      .chip{font-size:9px;padding:5px 8px;line-height:1.3}
+    }
+    .chip:hover{
+      background:rgba(0,240,255,.15);
+      border-color:rgba(0,240,255,.50);
+      transform:translateY(-2px);
+    }
+
     .toolbar{
       display:flex;
-      gap:10px;
+      gap:12px;
       flex-wrap:wrap;
-      margin-top:16px;
+      margin-top:20px;
       align-items:center;
     }
-    button{
-      padding:10px 16px;
-      border:1px solid rgba(0,212,255,.40);
-      background: linear-gradient(135deg, rgba(0,212,255,.15), rgba(167,139,250,.10));
-      color:#00d4ff;
-      border-radius:8px;
-      cursor:pointer;
-      font-size:12px;
-      font-weight:600;
-      transition:all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      outline:none;
-      position: relative;
-      overflow: hidden;
-      font-family: "Syne", sans-serif;
+    @media (max-width: 768px){
+      .toolbar{gap:10px;margin-top:18px}
     }
-
-    button::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(0,212,255,.30);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
+    @media (max-width: 640px){
+      .toolbar{gap:8px;margin-top:14px}
     }
-
-    button:active::before {
-      width: 300px;
-      height: 300px;
+    @media (max-width: 480px){
+      .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}
+      .filter-label{grid-column:1/-1;font-size:9px;margin-bottom:4px}
+      .filter-btn{font-size:9px;padding:6px 8px}
+      .print-btn{grid-column:1/-1;margin-left:0;font-size:9px;padding:6px 8px}
     }
-
-    button:hover{
-      background: linear-gradient(135deg, rgba(0,212,255,.25), rgba(167,139,250,.15));
-      border-color:rgba(0,212,255,.60);
-      transform:translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,212,255,.20);
+    @media (max-width: 360px){
+      .toolbar{gap:4px;margin-top:10px}
+      .filter-label{font-size:8px;margin-bottom:2px}
+      .filter-btn{font-size:8px;padding:5px 7px}
+      .print-btn{font-size:8px;padding:5px 7px}
     }
-
-    button:focus-visible{
-      outline:2px solid rgba(0,212,255,.60);
-      outline-offset:2px;
-    }
-    .filter-group{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .filter-label{
-      font-size:12px;
-      color:var(--muted);
-      font-weight:600;
-    }
+    .filter-label{font-size:clamp(11px, 2vw, 12px);color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:1px}
     .filter-btn{
-      padding:7px 12px;
-      background: linear-gradient(135deg, rgba(167,139,250,.08), rgba(255,107,53,.06));
-      color:var(--text);
-      border:1px solid rgba(167,139,250,.30);
-      border-radius:6px;
+      padding:clamp(9px, 2vw, 11px) clamp(14px, 3vw, 18px);
+      background:rgba(255,255,255,.04);
+      color:var(--text-secondary);
+      border:1.5px solid rgba(255,255,255,.14);
+      border-radius:11px;
       cursor:pointer;
-      font-size:11px;
-      font-weight:500;
-      transition:all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      font-family: "Syne", sans-serif;
-    }
-    .filter-btn.active{
-      background: linear-gradient(135deg, rgba(0,212,255,.25), rgba(167,139,250,.20));
-      border-color: rgba(0,212,255,.60);
-      color:#fff;
-      box-shadow: 0 0 20px rgba(0,212,255,.30);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,.30); }
-      50% { box-shadow: 0 0 40px rgba(0,212,255,.50); }
-    }
-
-    .filter-btn:hover{
-      border-color: rgba(0,212,255,.50);
-      background: linear-gradient(135deg, rgba(167,139,250,.15), rgba(255,107,53,.10));
-    }
-    .filter-btn:focus-visible{
-      outline:2px solid rgba(0,212,255,.60);
-      outline-offset:2px;
-    }
-    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-    .chip{
-      font-size:12px;
-      background:var(--chip);
-      border:1px solid var(--line);
-      padding:7px 10px;
-      border-radius:999px;
+      font-size:clamp(11px, 2vw, 13px);
+      font-weight:700;
+      transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+      font-family:"Outfit",sans-serif;
       white-space:nowrap;
     }
-    .grid{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:16px;
-      align-items:start;
+    .filter-btn:hover{
+      border-color:rgba(255,255,255,.30);
+      background:rgba(255,255,255,.10);
+      transform:translateY(-2px);
     }
-    @media (min-width: 1024px){
-      .grid{grid-template-columns: 1.4fr 0.6fr}
+    .filter-btn.active{
+      border-color: #00f0ff;
+      background: rgba(0,240,255,.18);
+      color:#00f0ff;
+      box-shadow:0 0 20px rgba(0,240,255,.20);
     }
-    .card{
-      border:1px solid rgba(0,212,255,.25);
-      background: linear-gradient(135deg, rgba(0,212,255,.06) 0%, rgba(167,139,250,.04) 50%, rgba(255,107,53,.02) 100%);
-      border-radius:16px;
-      padding:16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,.25), 0 0 40px rgba(0,212,255,.05);
-      animation: slideInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
-      backdrop-filter: blur(10px);
+    .print-btn{
+      padding:clamp(9px, 2vw, 12px) clamp(14px, 3vw, 20px);
+      border:1.5px solid #00f0ff;
+      background: rgba(0,240,255,.12);
+      color:#00f0ff;
+      border-radius:11px;
+      cursor:pointer;
+      font-weight:800;
+      font-size:clamp(11px, 2vw, 13px);
+      transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+      margin-left:auto;
+      font-family:"Outfit",sans-serif;
+      white-space:nowrap;
+    }
+    @media (max-width: 480px){
+      .print-btn{margin-left:0;font-size:10px;padding:8px 12px}
+    }
+    .print-btn:hover{
+      background:rgba(0,240,255,.22);
+      transform:translateY(-2px);
+      box-shadow:0 0 20px rgba(0,240,255,.25);
     }
 
-    @keyframes slideInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .grid{
+      margin-top:32px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:24px;
+      align-items:start;
+    }
+    @media (min-width: 768px){
+      .grid{grid-template-columns: 1fr}
+    }
+    @media (min-width: 1024px){
+      .grid{grid-template-columns: 1.35fr 0.65fr}
+    }
+
+    .card{
+      border:1px solid rgba(0,240,255,.20);
+      background: rgba(13,20,37,.60);
+      border-radius:20px;
+      padding:28px;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-sm);
+      transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+      animation: cardFadeIn 0.7s ease-out 0.2s both;
+    }
+
+    @media (max-width: 768px){
+      .card{padding:22px;border-radius:16px}
+    }
+    @media (max-width: 640px){
+      .card{padding:16px;border-radius:14px}
+    }
+    @media (max-width: 480px){
+      .card{padding:12px;border-radius:12px}
+    }
+    @media (max-width: 360px){
+      .card{padding:10px;border-radius:10px}
+    }
+
+    @keyframes cardFadeIn{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .card:hover{
+      border-color:rgba(0,240,255,.35);
+      background:rgba(13,20,37,.75);
+      transform:translateY(-4px);
     }
 
     .card h2{
-      margin:0 0 12px;
-      font-size:clamp(13px, 3vw, 15px);
-      letter-spacing:.2px;
-      display:flex;
-      align-items:center;
+      margin:0 0 16px;
+      font-size:clamp(13px, 2.5vw, 14px);
+      color:#00f0ff;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+    @media (max-width: 480px){
+      .card h2{font-size:clamp(11px, 2vw, 12px);letter-spacing:0.5px;margin-bottom:12px}
+    }
+    @media (max-width: 360px){
+      .card h2{font-size:11px;letter-spacing:0px;margin-bottom:10px}
+    }
+
+    .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:clamp(11px, 2vw, 13px);
+      border:1.2px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      padding:clamp(7px, 2vw, 9px) clamp(12px, 2vw, 14px);
+      border-radius:10px;
+      white-space:nowrap;
+      font-weight:700;
+      transition:all 0.25s cubic-bezier(0.4,0,0.2,1);
+    }
+    @media (max-width: 480px){
+      .legend{gap:8px}
+      .pill{font-size:10px;padding:6px 10px;gap:6px}
+    }
+    .pill:hover{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.28);
+      transform:translateY(-2px);
+    }
+
+    .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;box-shadow:0 0 12px currentColor;transition:all 0.3s}
+    .pill:hover .dot{transform:scale(1.15);box-shadow:0 0 16px currentColor}
+    .dot.aula{background:#00f0ff;color:#00f0ff}
+    .dot.seminario{background:#c084fc;color:#c084fc}
+    .dot.avaliacao{background:#ff2e71;color:#ff2e71}
+    .dot.exame{background:#10b981;color:#10b981}
+    .dot.feriado{background:#ff4655;color:#ff4655}
+    .dot.recesso{background:#fb923c;color:#fb923c}
+
+    .note{color:var(--muted);font-size:13px;line-height:1.7;margin:18px 0 0;font-weight:500}
+
+    /* CALENDÁRIO */
+    .calendar{display:grid;grid-template-columns:1fr;gap:18px}
+    .month{
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:16px;
+      overflow:hidden;
+      background: rgba(0,0,0,.20);
+      transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+      animation: fadeInUp 0.6s ease-out backwards;
+    }
+    .month:nth-child(1){animation-delay:0ms}
+    .month:nth-child(2){animation-delay:80ms}
+    .month:nth-child(3){animation-delay:160ms}
+    .month:nth-child(4){animation-delay:240ms}
+    .month:nth-child(5){animation-delay:320ms}
+
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(16px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .month:hover{
+      border-color:rgba(0,240,255,.30);
+      background:rgba(0,0,0,.28);
+      transform:translateY(-4px);
+    }
+
+    .month-header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px 16px;
+      background: rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.12);
       gap:10px;
       flex-wrap:wrap;
-      font-family: "Syne", sans-serif;
-      font-weight: 700;
-      color: #00d4ff;
     }
-    .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:7px;
-      font-size:11px;
-      border:1px solid var(--line);
-      background: linear-gradient(135deg, rgba(167,139,250,.12), rgba(255,107,53,.08));
-      padding:6px 10px;
-      border-radius:999px;
-      white-space:nowrap;
-      font-weight: 500;
+    @media (max-width: 768px){
+      .month-header{padding:12px 12px;gap:8px}
     }
-    .dot{width:10px;height:10px;border-radius:50%}
-    .dot.aula{background: linear-gradient(135deg, #00d4ff, #0084ff); box-shadow: 0 0 10px rgba(0,212,255,.60);}
-    .dot.seminario{background: linear-gradient(135deg, #a78bfa, #8b5cf6); box-shadow: 0 0 10px rgba(167,139,250,.60);}
-    .dot.avaliacao{background: linear-gradient(135deg, #ff1744, #c60055); box-shadow: 0 0 10px rgba(255,23,68,.60);}
-    .dot.feriado{background: linear-gradient(135deg, #ff1744, #ff5555); box-shadow: 0 0 8px rgba(255,23,68,.50);}
-    .dot.recesso{background: linear-gradient(135deg, #ff6b35, #ff8a5b); box-shadow: 0 0 10px rgba(255,107,53,.60);}
-    .note{color:var(--muted);font-size:11px;line-height:1.5;margin:12px 0 0}
-    .calendar{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
+    @media (max-width: 640px){
+      .month-header{padding:10px 10px}
     }
-    .month{
-      border:1px solid rgba(0,212,255,.20);
-      border-radius:14px;
-      overflow:hidden;
-      background: linear-gradient(135deg, rgba(0,212,255,.04) 0%, rgba(167,139,250,.03) 100%);
-      box-shadow: 0 4px 20px rgba(0,0,0,.20);
-      animation: slideInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    .month-title{font-weight:900;font-size:clamp(11px, 2.5vw, 14px);color:#00f0ff;text-transform:uppercase;letter-spacing:clamp(0px, 1vw, 0.8px)}
+    @media (max-width: 480px){
+      .month-title{font-size:10px;letter-spacing:0px}
     }
-    .month-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:12px;
-      background: linear-gradient(90deg, rgba(0,212,255,.12) 0%, rgba(167,139,250,.08) 50%, rgba(255,107,53,.06) 100%);
-      border-bottom:1px solid rgba(0,212,255,.20);
-      flex-wrap:wrap;
-      gap:8px;
+    .month-meta{color:var(--muted);font-size:clamp(9px, 2vw, 13px);font-weight:700}
+    @media (max-width: 480px){
+      .month-meta{font-size:8px}
     }
-    .month-title{
-      font-weight:700;
-      font-size:clamp(12px, 2.5vw, 14px);
-      font-family: "Syne", sans-serif;
-      color: #00d4ff;
-    }
-    .month-meta{color:var(--muted);font-size:11px}
+    
     .dow{
-      display:grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap:0;
-      border-bottom:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      display:grid;grid-template-columns:repeat(7,1fr);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
     }
     .dow div{
-      padding:10px 6px;
-      font-size:clamp(10px, 1.5vw, 12px);
-      color:var(--muted);
+      padding:clamp(8px, 2vw, 12px) clamp(4px, 1vw, 8px);
+      font-size:clamp(8px, 2vw, 13px);color:var(--muted);
       text-align:center;
-      border-right:1px solid rgba(255,255,255,.04);
-      font-weight:600;
+      border-right:1px solid rgba(255,255,255,.06);
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:clamp(0px, 1vw, 0.5px);
+    }
+    @media (max-width: 480px){
+      .dow div{padding:6px 3px;font-size:8px}
     }
     .dow div:last-child{border-right:none}
-    .days{
-      display:grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap:0;
-    }
+
+    .days{display:grid;grid-template-columns:repeat(7,1fr)}
     .day{
-      min-height:70px;
-      border-right:1px solid rgba(0,212,255,.08);
-      border-bottom:1px solid rgba(0,212,255,.08);
-      padding:8px 6px;
-      position:relative;
-      overflow:hidden;
-      transition:all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      background: rgba(0,0,0,.2);
-      cursor: default;
+      min-height:clamp(40px, 12vw, 90px);
+      border-right:1px solid rgba(255,255,255,.07);
+      border-bottom:1px solid rgba(255,255,255,.07);
+      padding:clamp(4px, 2vw, 12px);
+      background: rgba(0,0,0,.16);
+      transition:all 0.25s cubic-bezier(0.4,0,0.2,1);
     }
-
-    @media (min-width: 768px){
-      .day{min-height:85px;padding:10px 8px}
+    @media (max-width: 640px){
+      .day{min-height:50px;padding:4px}
     }
-
-    .day:hover {
-      background: radial-gradient(circle at center, rgba(0,212,255,.15) 0%, rgba(0,0,0,.2) 100%);
-      border-color: rgba(0,212,255,.30);
-      box-shadow: inset 0 0 20px rgba(0,212,255,.10);
+    @media (max-width: 480px){
+      .day{min-height:42px;padding:3px}
     }
-
+    @media (max-width: 360px){
+      .day{min-height:38px;padding:2px}
+    }
+    .day:hover{
+      background:rgba(0,0,0,.30);
+    }
     .day:nth-child(7n){border-right:none}
-    .day-num{
-      font-size:clamp(11px, 2vw, 13px);
-      color:#fff;
-      opacity:.95;
-      font-weight:600;
-      font-family: "Syne", sans-serif;
-    }
     .day.empty{background: rgba(255,255,255,.01)}
-    .day.filtered-out{opacity:0.3}
-    .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+    .day.filtered-out{opacity:.18}
+
+    .day-num{font-size:clamp(9px, 2.5vw, 14px);font-weight:900;color:#b8c0e0;margin-bottom:clamp(1px, 1vw, 4px)}
+    @media (max-width: 480px){
+      .day-num{font-size:clamp(8px, 2vw, 10px);margin-bottom:1px}
+    }
+    @media (max-width: 360px){
+      .day-num{font-size:8px;margin-bottom:0px}
+    }
+
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:clamp(4px, 1.5vw, 8px)}
     .tag{
-      font-size:9px;
-      padding:2px 5px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color:#fff;
-      line-height:1;
-      max-width:100%;
+      font-size:clamp(8px, 2vw, 11px);
+      padding:clamp(2px, 1vw, 4px) clamp(3px, 2vw, 8px);
+      border-radius:7px;
+      border:1.2px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      animation: tagSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+      max-width:100%;
+      transition:all 0.25s cubic-bezier(0.4,0,0.2,1);
+      font-weight:700;
+      line-height:1.3;
     }
+    @media (max-width: 480px){
+      .tags{gap:4px;margin-top:3px}
+      .tag{font-size:clamp(7px, 1.8vw, 9px);padding:1px 3px;line-height:1.2}
+    }
+    @media (max-width: 360px){
+      .tags{gap:3px;margin-top:2px}
+      .tag{font-size:7px;padding:1px 2px;line-height:1.1}
+    }
+    .tag:hover{
+      transform:scale(1.05);
+    }
+    .tag.aula{border-color: rgba(0,240,255,.70); color:#00f0ff; background: rgba(0,240,255,.14)}
+    .tag.aula:hover{background:rgba(0,240,255,.25)}
+    .tag.seminario{border-color: rgba(192,132,252,.70); color:#c084fc; background: rgba(192,132,252,.14)}
+    .tag.seminario:hover{background:rgba(192,132,252,.25)}
+    .tag.avaliacao{border-color: rgba(255,46,113,.70); color:#ff2e71; background: rgba(255,46,113,.14)}
+    .tag.avaliacao:hover{background:rgba(255,46,113,.25)}
+    .tag.exame{border-color: rgba(16,185,129,.70); color:#10b981; background: rgba(16,185,129,.14)}
+    .tag.exame:hover{background:rgba(16,185,129,.25)}
+    .tag.feriado{border-color: rgba(255,70,85,.60); color:#ff8899; background: rgba(255,70,85,.12)}
+    .tag.feriado:hover{background:rgba(255,70,85,.20)}
+    .tag.recesso{border-color: rgba(251,146,60,.70); color:#ffb866; background: rgba(251,146,60,.14)}
+    .tag.recesso:hover{background:rgba(251,146,60,.25)}
 
-    @keyframes tagSlideIn {
-      from { opacity: 0; transform: translateX(-10px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    .tag:nth-child(1) { animation-delay: 0.1s; }
-    .tag:nth-child(2) { animation-delay: 0.2s; }
-    .tag:nth-child(3) { animation-delay: 0.3s; }
-    .tag:nth-child(n+4) { animation-delay: 0.4s; }
-
-    .tag.aula{
-      border-color: rgba(0,212,255,.50);
-      background: linear-gradient(135deg, rgba(0,212,255,.20), rgba(0,212,255,.12));
-      color: #00d4ff;
-    }
-    .tag.seminario{
-      border-color: rgba(167,139,250,.50);
-      background: linear-gradient(135deg, rgba(167,139,250,.20), rgba(167,139,250,.12));
-      color: #a78bfa;
-    }
-    .tag.avaliacao{
-      border-color: rgba(255,23,68,.50);
-      background: linear-gradient(135deg, rgba(255,23,68,.20), rgba(255,23,68,.12));
-      color: #ff1744;
-    }
-    .tag.feriado{
-      border-color: rgba(255,23,68,.40);
-      background: linear-gradient(135deg, rgba(255,23,68,.15), rgba(255,23,68,.08));
-      color: #ff5555;
-    }
-    .tag.recesso{
-      border-color: rgba(255,107,53,.50);
-      background: linear-gradient(135deg, rgba(255,107,53,.20), rgba(255,107,53,.12));
-      color: #ff8a5b;
-    }
     .desc{
-      margin-top:4px;
+      margin-top:clamp(3px, 1vw, 7px);
       color:var(--muted);
-      font-size:9px;
-      line-height:1.2;
+      font-size:clamp(9px, 2vw, 12px);
+      line-height:1.4;
       display:-webkit-box;
       -webkit-line-clamp:2;
       -webkit-box-orient:vertical;
       overflow:hidden;
+      font-weight:500;
     }
-    @media (min-width: 768px){
-      .desc{
-        font-size:10px;
-        -webkit-line-clamp:3;
-      }
+    @media (max-width: 640px){
+      .desc{display:-webkit-box;-webkit-line-clamp:1;font-size:9px;margin-top:2px}
     }
-    .table-wrapper{
-      overflow-x:auto;
-      margin-top:12px;
+    @media (max-width: 480px){
+      .desc{font-size:8px;margin-top:2px;display:none}
     }
+    @media (max-width: 360px){
+      .desc{display:none}
+    }
+
+    /* TABELA */
+    .table-wrapper{overflow-x:auto;margin-top:16px;-webkit-overflow-scrolling:touch}
     table{
       width:100%;
       border-collapse:separate;
       border-spacing:0;
-      border-radius:12px;
-      border:1px solid rgba(0,212,255,.20);
-      background: linear-gradient(135deg, rgba(0,212,255,.04), rgba(167,139,250,.03));
-      font-size:clamp(10px, 2vw, 12px);
-      box-shadow: 0 4px 20px rgba(0,0,0,.20);
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      overflow:hidden;
+      background: rgba(0,0,0,.20);
+      table-layout:fixed;
     }
     thead th{
       text-align:left;
-      font-size:clamp(10px, 2vw, 12px);
-      color:#00d4ff;
-      padding:12px 10px;
-      background: linear-gradient(90deg, rgba(0,212,255,.15), rgba(167,139,250,.10));
-      border-bottom:1px solid rgba(0,212,255,.20);
-      position:sticky;
-      top:0;
-      font-weight:600;
-      font-family: "Syne", sans-serif;
+      font-size:clamp(12px, 2vw, 13px);
+      color:#00f0ff;
+      padding:clamp(10px, 2vw, 14px) clamp(12px, 2vw, 16px);
+      background: rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.12);
+      position:sticky;top:0;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:clamp(0px, 1vw, 0.8px);
+      white-space:nowrap;
+    }
+    @media (max-width: 480px){
+      thead th{font-size:9px;padding:8px;letter-spacing:0px}
     }
     tbody td{
-      padding:12px 10px;
-      border-bottom:1px solid rgba(0,212,255,.08);
-      font-size:clamp(10px, 1.8vw, 12px);
+      padding:clamp(10px, 2vw, 14px) clamp(12px, 2vw, 16px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      font-size:clamp(11px, 2vw, 13px);
       vertical-align:top;
-      color:#e9edff;
+      color:var(--text-secondary);
+      font-weight:500;
     }
-    tbody tr:hover {
-      background: rgba(0,212,255,.08);
-      transform: translateX(4px);
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    @media (max-width: 480px){
+      tbody td{padding:8px;font-size:10px}
     }
-    tbody tr.filtered-out{display:none}
+    tbody tr{
+      transition:all 0.25s cubic-bezier(0.4,0,0.2,1);
+    }
+    tbody tr:hover{
+      background:rgba(0,240,255,.06);
+    }
     tbody tr:last-child td{border-bottom:none}
-    .col-date{min-width:100px;white-space:nowrap}
-    .col-time{min-width:100px;white-space:nowrap}
+    tbody tr.filtered-out{display:none}
+
+    @media (max-width: 640px){
+      .col-date{font-size:clamp(11px, 2vw, 12px);padding:clamp(10px, 2vw, 12px)}
+      .col-time{font-size:clamp(11px, 2vw, 12px);padding:clamp(10px, 2vw, 12px)}
+      thead th{padding:clamp(10px, 2vw, 12px);font-size:clamp(10px, 2vw, 11px)}
+      tbody td{padding:clamp(10px, 2vw, 12px);font-size:clamp(11px, 2vw, 12px)}
+    }
+    @media (max-width: 480px){
+      .col-date{font-size:10px;padding:8px}
+      .col-time{font-size:10px;padding:8px}
+      thead th{padding:8px;font-size:9px;letter-spacing:0px}
+      tbody td{padding:8px;font-size:10px}
+    }
+    
     .status{
-      display:inline-flex;
-      align-items:center;
-      gap:7px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(0,212,255,.30);
-      background: linear-gradient(135deg, rgba(0,212,255,.12), rgba(0,212,255,.06));
-      font-size:11px;
+      display:inline-flex;align-items:center;gap:clamp(7px, 2vw, 10px);
+      padding:clamp(7px, 2vw, 9px) clamp(11px, 2vw, 14px);
+      border-radius:9px;
+      border:1.3px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      font-size:clamp(11px, 2vw, 13px);
+      font-weight:800;
       white-space:nowrap;
-      font-weight: 600;
+      transition:all 0.25s cubic-bezier(0.4,0,0.2,1);
     }
-    .footer{margin-top:16px;color:var(--muted);font-size:11px;text-align:center}
-    @media (max-width: 639px){
-      body{padding:12px}
-      .hero{padding:14px}
-      .card{padding:12px}
-      .chip{font-size:11px;padding:6px 8px}
-      .toolbar{gap:8px;margin-top:12px}
-      button{padding:8px 12px;font-size:11px}
+    @media (max-width: 480px){
+      .status{font-size:10px;padding:7px 10px;gap:8px}
     }
+    .status:hover{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.30);
+      transform:translateY(-2px);
+    }
+
     @media print{
       body{background:#fff;color:#000;padding:0}
+      .toolbar{display:none}
       .hero,.card,.month,table{box-shadow:none}
       .hero,.card,.month{background:#fff;border-color:#ddd}
-      .toolbar,.filter-group{display:none}
-      :root{--line:rgba(0,0,0,.12)}
-      .sub,.note,.footer,.desc{color:#333}
+      .sub,.note,.desc{color:#333}
       .chip,.pill,.tag,.status{background:#f6f6f6;border-color:#ddd;color:#000}
       .dow{background:#f3f3f3}
+      h1{-webkit-text-fill-color:#000;color:#000}
     }
+
+    /* AVALIAÇÕES */
+    .eval-section {
+      padding: 20px;
+      border-left: 3px solid rgba(0, 240, 255, 0.40);
+      background: rgba(0, 240, 255, 0.05);
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 640px){
+      .eval-section{padding:16px}
+    }
+
+    .eval-title {
+      margin: 0 0 16px;
+      font-size: 14px;
+      color: #00f0ff;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    @media (max-width: 480px){
+      .eval-title{font-size:clamp(11px, 2vw, 12px);letter-spacing:0.5px;margin-bottom:10px}
+    }
+    @media (max-width: 360px){
+      .eval-title{font-size:10px;letter-spacing:0px;margin-bottom:8px}
+    }
+
+    .eval-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin: 14px 0;
+    }
+
+    @media (max-width: 768px){
+      .eval-grid{grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));gap:12px}
+    }
+    @media (max-width: 640px){
+      .eval-grid{grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));gap:10px;margin:10px 0}
+    }
+    @media (max-width: 480px){
+      .eval-grid{grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));gap:8px;margin:8px 0}
+    }
+    @media (max-width: 360px){
+      .eval-grid{grid-template-columns: repeat(2, 1fr);gap:6px;margin:6px 0}
+    }
+
+    .eval-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1.2px solid rgba(255, 255, 255, 0.14);
+      padding: 14px;
+      border-radius: 11px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @media (max-width: 768px){
+      .eval-item{padding:12px}
+    }
+    @media (max-width: 640px){
+      .eval-item{padding:10px;border-radius:9px}
+    }
+    @media (max-width: 480px){
+      .eval-item{padding:8px;border-radius:8px}
+    }
+    @media (max-width: 360px){
+      .eval-item{padding:6px;border-radius:7px}
+    }
+
+    .eval-item:hover {
+      background: rgba(255, 255, 255, 0.10);
+      border-color: rgba(255, 255, 255, 0.26);
+    }
+
+    .eval-label {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    @media (max-width: 480px){
+      .eval-label{font-size:10px;letter-spacing:0px;margin-bottom:6px}
+    }
+    @media (max-width: 360px){
+      .eval-label{font-size:9px;margin-bottom:4px}
+    }
+
+    .eval-score {
+      font-size: 16px;
+      font-weight: 900;
+      color: #fb923c;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 480px){
+      .eval-score{font-size:clamp(13px, 3vw, 15px);letter-spacing:0px}
+    }
+    @media (max-width: 360px){
+      .eval-score{font-size:12px}
+    }
+
+    .eval-note {
+      background: rgba(251, 146, 60, 0.08);
+      border: 1.2px solid rgba(251, 146, 60, 0.25);
+      padding: 14px;
+      border-radius: 11px;
+      margin-top: 14px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .eval-text {
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 1.65;
+      margin: 0 0 14px;
+      font-weight: 500;
+    }
+
   </style>
   <style>body { box-sizing: border-box; }</style>
   <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
@@ -505,59 +702,135 @@
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
  <body>
-  <a href="#main-content" class="skip-link">Ir para conteúdo principal</a>
   <div class="wrap">
    <section class="hero">
     <h1>UEM — Calendário 2026 + Cronograma de Aulas (Ed. Física Noturno) • Anatomia Humana Aplicada</h1>
-    <p class="sub"><strong>Docente:</strong> Profª Dra. Cláudia Pinheiro • <strong>Carga horária:</strong> 68h • <strong>Formato:</strong> Semestral (1º semestre UEM 2026)<br><strong>Aulas:</strong> Segundas-feiras • <strong>Horário:</strong> 19h30–23h00 (4 aulas/noite) • <strong>Período letivo UEM:</strong> 09/03/2026 a 11/07/2026</p>
+    <p class="sub"><strong>Docente:</strong> Profª Dra. Cláudia Pinheiro • <strong>CH:</strong> 68h • <strong>Aulas:</strong> Segundas • <strong>Horário:</strong> 19:30–23:00 • <strong>Período letivo UEM:</strong> 09/03/2026 a 11/07/2026</p>
     <div class="chips">
-     <div class="chip"><strong>Recesso no calendário:</strong> 20/04 (Recesso Acadêmico)
+     <div class="chip">
+      <strong>Seminários:</strong> 27/04, 25/05 e 29/06 (1 semana antes de cada avaliação)
      </div>
-     <div class="chip"><strong>Feriados-chave:</strong> 03/04, 21/04, 01/05, 04/06
+     <div class="chip">
+      <strong>Avaliações:</strong> 27/04, 01/06 e 06/07 (Teórica + Prática)
      </div>
-     <div class="chip"><strong>Maringá:</strong> 05/10 (Aniversário) • 11/05 (Reconhecimento da UEM)
+     <div class="chip">
+      <strong>Exame final:</strong> 13/07 (Teórica 7,0 + Prática 3,0)
      </div>
     </div>
-    <div class="toolbar">
-     <div class="filter-group">
-      <span class="filter-label" id="filter-label">Filtrar por tipo:</span> <button class="filter-btn active" data-filter="all" aria-pressed="true">Todos</button> <button class="filter-btn" data-filter="aula" aria-pressed="false">Aulas</button> <button class="filter-btn" data-filter="seminario" aria-pressed="false">Seminários</button> <button class="filter-btn" data-filter="avaliacao" aria-pressed="false">Avaliações</button> <button class="filter-btn" data-filter="feriado" aria-pressed="false">Feriados</button>
-     </div><button onclick="window.print()" aria-label="Imprimir calendário">🖨️ Imprimir</button>
+    <div class="toolbar"><span class="filter-label">Filtrar:</span> <button class="filter-btn active" data-filter="all" aria-pressed="true">Todos</button> <button class="filter-btn" data-filter="aula" aria-pressed="false">Aulas</button> <button class="filter-btn" data-filter="seminario" aria-pressed="false">Seminários</button> <button class="filter-btn" data-filter="avaliacao" aria-pressed="false">Avaliações</button> <button class="filter-btn" data-filter="exame" aria-pressed="false">Exame Final</button> <button class="filter-btn" data-filter="feriado" aria-pressed="false">Feriados</button> <button class="filter-btn" data-filter="recesso" aria-pressed="false">Recesso</button> <button class="print-btn" onclick="window.print()">🖨️ Imprimir</button>
     </div>
     <div class="grid">
      <div class="card">
-      <h2>🗓️ Calendário (março a julho/2026)</h2>
-      <div class="legend">
-       <span class="pill"><span class="dot aula"></span>Aula (conteúdo)</span> <span class="pill"><span class="dot seminario"></span>Seminário</span> <span class="pill"><span class="dot avaliacao"></span>Avaliação</span> <span class="pill"><span class="dot feriado"></span>Feriado</span> <span class="pill"><span class="dot recesso"></span>Recesso</span>
+      <h2>🗓️ Calendário (Março a Julho/2026)</h2>
+      <div class="legend"><span class="pill"><span class="dot aula"></span>Aula</span> <span class="pill"><span class="dot seminario"></span>Seminário</span> <span class="pill"><span class="dot avaliacao"></span>Avaliação</span> <span class="pill"><span class="dot exame"></span>Exame final</span> <span class="pill"><span class="dot feriado"></span>Feriado</span> <span class="pill"><span class="dot recesso"></span>Recesso</span>
       </div>
-      <div id="calendar" class="calendar" style="margin-top:12px"></div>
-      <p class="note">Base: Anexo Maringá UEM 2026 (03/04, 04/04, 05/04, 20/04, 21/04, 01/05, 02/05, 10/05, 11/05, 04/06)</p>
+      <div id="calendar" class="calendar" style="margin-top:16px"></div>
+      <p class="note">Base feriados/recessos (Anexo UEM Maringá 2026): 03/04, 04/04, 05/04, 20/04, 21/04, 01/05, 02/05, 10/05, 11/05, 04/06.</p>
+      <p class="note"><strong>Importante:</strong> 20/04 é recesso acadêmico — fica marcado no calendário.</p>
      </div>
      <aside class="card">
       <h2>📌 Cronograma — Seg 19:30–23:00</h2>
       <div class="table-wrapper">
-       <table aria-label="Cronograma de aulas" role="grid">
+       <table aria-label="Cronograma de aulas">
         <thead>
          <tr>
-          <th class="col-date" scope="col">Data</th>
-          <th class="col-time" scope="col">Horário</th>
-          <th scope="col">Conteúdo</th>
+          <th class="col-date">Data</th>
+          <th class="col-time">Horário</th>
+          <th>Conteúdo / Atividade</th>
          </tr>
         </thead>
         <tbody id="cron-body"></tbody>
        </table>
       </div>
-      <p class="note"><strong>3 avaliações:</strong> prova teórica + prática no mesmo dia.<br><strong>2 seminários:</strong> teórico-práticos integrados.</p>
-      <div class="footer">
-       Calendário interativo e responsivo — compatível com impressão
-      </div>
+      <p class="note">Critério (conforme o print): em cada avaliação periódica: <strong>Teórica (0–5,0) + Prática (0–3,0) + Seminário (0–2,0)</strong>. <br>
+        Exame final: <strong>Teórica (0–7,0) + Prática (0–3,0)</strong>.</p>
      </aside>
+    </div><!-- SEÇÃO DE AVALIAÇÕES DETALHADAS -->
+    <div class="card" style="margin-top: 28px;">
+     <h2>📋 Metodologia de Avaliação</h2>
+     <div class="eval-section">
+      <h3 class="eval-title">Avaliações Periódicas (1ª, 2ª e 3ª)</h3>
+      <div class="eval-grid">
+       <div class="eval-item">
+        <div class="eval-label">
+         Prova Teórica
+        </div>
+        <div class="eval-score">
+         0,0 — 5,0
+        </div>
+       </div>
+       <div class="eval-item">
+        <div class="eval-label">
+         Prova Prática
+        </div>
+        <div class="eval-score">
+         0,0 — 3,0
+        </div>
+       </div>
+       <div class="eval-item">
+        <div class="eval-label">
+         Seminário Teórico-Prático (Grupo)
+        </div>
+        <div class="eval-score">
+         0,0 — 2,0
+        </div>
+       </div>
+      </div>
+      <div class="eval-note"><strong>Nota do seminário por aluno:</strong><br><span style="font-size: 12px; color: var(--muted); line-height: 1.6; display: block; margin-top: 8px;"> (Autoavaliação 0–1,0 + Avaliação de 2 pares 0–1,0 + Avaliação do professor 0–1,0) ÷ 3 = <strong>0,0–1,0</strong>, somada com valor de <strong>0,0–1,0</strong> do seminário em grupo = <strong>0,0–2,0</strong> </span>
+      </div>
+     </div>
+     <div class="eval-section" style="margin-top: 20px;">
+      <h3 class="eval-title">Ausência Justificada em Seminário</h3>
+      <p class="eval-text">Acadêmicos que não comparecerem no dia da apresentação dos seminários e apresentarem documento comprobatório de motivo que justifica a ausência terão:</p>
+      <div class="eval-grid">
+       <div class="eval-item">
+        <div class="eval-label">
+         Prova Teórica (reajustada)
+        </div>
+        <div class="eval-score">
+         0,0 — 6,0
+        </div>
+       </div>
+       <div class="eval-item">
+        <div class="eval-label">
+         Prova Prática (reajustada)
+        </div>
+        <div class="eval-score">
+         0,0 — 4,0
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="eval-section" style="margin-top: 20px;">
+      <h3 class="eval-title">Exame Final</h3>
+      <p class="eval-text">Abrange todo o programa da disciplina com prova teórica e prática:</p>
+      <div class="eval-grid">
+       <div class="eval-item">
+        <div class="eval-label">
+         Prova Teórica
+        </div>
+        <div class="eval-score">
+         0,0 — 7,0
+        </div>
+       </div>
+       <div class="eval-item">
+        <div class="eval-label">
+         Prova Prática
+        </div>
+        <div class="eval-score">
+         0,0 — 3,0
+        </div>
+       </div>
+      </div>
+     </div>
     </div>
    </section>
   </div>
   <script>
     // ==============================
-    // 1) DADOS — UEM 2026
+    // 1) EVENTOS UEM 2026 (ANEXO MARINGÁ) + CRONOGRAMA
     // ==============================
+
     const eventosUEM = [
       { date: "2026-04-03", tipo: "feriado", titulo: "Paixão de Cristo" },
       { date: "2026-04-04", tipo: "recesso", titulo: "Recesso Acadêmico" },
@@ -571,6 +844,7 @@
       { date: "2026-06-04", tipo: "feriado", titulo: "Corpus Christi" }
     ];
 
+    // CRONOGRAMA (inclui seminários e exame final)
     const cronograma = [
       { date: "2026-03-09", tipo: "aula", titulo: "Introdução à Anatomia Humana", desc: "Nomenclatura, posição anatômica e variações.", hora: "19:30–23:00" },
       { date: "2026-03-16", tipo: "aula", titulo: "Planos e Eixos de Seção", desc: "Delimitação corporal e eixos de movimento.", hora: "19:30–23:00" },
@@ -578,19 +852,41 @@
       { date: "2026-03-30", tipo: "aula", titulo: "Artrologia: Articulações", desc: "Classificação morfológica e funcional das articulações.", hora: "19:30–23:00" },
       { date: "2026-04-06", tipo: "aula", titulo: "Sistema Muscular: Princípios Gerais", desc: "Estrutura macroscópica e dinâmica da contração muscular.", hora: "19:30–23:00" },
       { date: "2026-04-13", tipo: "aula", titulo: "Sistema Muscular: MMSS", desc: "Anatomia regional do ombro, braço e antebraço.", hora: "19:30–23:00" },
-      { date: "2026-04-27", tipo: "aula", titulo: "Sistema Muscular: MMII", desc: "Anatomia regional do quadril, coxa, perna e pé.", hora: "19:30–23:00" },
+      { date: "2026-04-13", tipo: "aula", titulo: "Sistema Muscular: MMII", desc: "Anatomia regional do quadril, coxa, perna e pé.", hora: "19:30–23:00" },
+      { date: "2026-04-13", tipo: "seminario", titulo: "Seminário Teórico–Prático 1", desc: "Aparelho locomotor aplicado ao gesto motor.", hora: "19:30–23:00" },
+      { date: "2026-04-27", tipo: "seminario", titulo: "Seminário Teórico–Prático (Transfer)", desc: "Recuperação para quem faltou em 13/04.", hora: "19:30–23:00" },
+
+      // ✅ 1ª AVALIAÇÃO (27/04)
+      { date: "2026-04-27", tipo: "avaliacao", titulo: "1ª Avaliação Periódica (Teórica + Prática)", desc: "Teórica (0–5,0) + Prática (0–3,0).", hora: "19:30–23:00" },
+
       { date: "2026-05-04", tipo: "aula", titulo: "Músculos do Tórax, Abdome e Dorso", desc: "Paredes do tronco e assoalho pélvico (visão morfofuncional).", hora: "19:30–23:00" },
-      { date: "2026-05-11", tipo: "seminario", titulo: "Seminário Teórico–Prático 1", desc: "Aparelho locomotor aplicado ao gesto motor.", hora: "19:30–23:00" },
-      { date: "2026-05-18", tipo: "aula", titulo: "Sistema Nervoso: Introdução", desc: "Encéfalo e medula espinal (anatomia macroscópica).", hora: "19:30–23:00" },
-      { date: "2026-05-25", tipo: "aula", titulo: "Sistema Nervoso Periférico", desc: "Nervos e plexos (braquial e lombossacral).", hora: "19:30–23:00" },
-      { date: "2026-06-01", tipo: "avaliacao", titulo: "1ª Avaliação Periódica", desc: "Teórica + Prática. Conteúdos: Intro, Planos, Osteologia, Artrologia, Muscular.", hora: "19:30–23:00" },
-      { date: "2026-06-08", tipo: "aula", titulo: "Tronco Encefálico, Cerebelo e Controle Motor", desc: "Postura, equilíbrio e dinamismo (interface com Ed. Física).", hora: "19:30–23:00" },
-      { date: "2026-06-15", tipo: "aula", titulo: "Vias Aferentes Somáticas e Propriocepção", desc: "Fusos neuromusculares e órgãos tendinosos.", hora: "19:30–23:00" },
-      { date: "2026-06-22", tipo: "seminario", titulo: "Seminário Teórico–Prático 2", desc: "Neuroanatomia aplicada ao movimento + estudo de casos.", hora: "19:30–23:00" },
-      { date: "2026-06-29", tipo: "avaliacao", titulo: "2ª Avaliação Periódica", desc: "Teórica + Prática. Sistema Nervoso e propriocepção.", hora: "19:30–23:00" },
-      { date: "2026-07-06", tipo: "avaliacao", titulo: "3ª Avaliação Periódica", desc: "Teórica + Prática (Final). Integração: nervoso + cardiorrespiratório.", hora: "19:30–23:00" }
+
+      { date: "2026-05-11", tipo: "aula", titulo: "Sistema Nervoso: Introdução", desc: "Encéfalo e medula espinal (anatomia macroscópica).", hora: "19:30–23:00" },
+      { date: "2026-05-18", tipo: "aula", titulo: "Sistema Nervoso Periférico", desc: "Nervos e plexos (braquial e lombossacral).", hora: "19:30–23:00" },
+
+      // ✅ SEMINÁRIO 2 (25/05 - 1 semana antes da 2ª avaliação)
+      { date: "2026-05-25", tipo: "seminario", titulo: "Seminário Teórico–Prático 2", desc: "Neuroanatomia aplicada ao movimento + estudo de casos.", hora: "19:30–23:00" },
+
+      { date: "2026-05-25", tipo: "aula", titulo: "Tronco Encefálico, Cerebelo e Controle Motor", desc: "Postura, equilíbrio e dinamismo (interface com Ed. Física).", hora: "19:30–23:00" },
+
+      // ✅ 2ª AVALIAÇÃO (01/06)
+      { date: "2026-06-01", tipo: "avaliacao", titulo: "2ª Avaliação Periódica (Teórica + Prática)", desc: "Teórica (0–5,0) + Prática (0–3,0).", hora: "19:30–23:00" },
+
+      { date: "2026-06-08", tipo: "aula", titulo: "Vias Aferentes Somáticas e Propriocepção", desc: "Fusos neuromusculares e órgãos tendinosos.", hora: "19:30–23:00" },
+      { date: "2026-06-15", tipo: "aula", titulo: "Vias Eferentes Somáticas", desc: "Inervação motora e reflexos espinais.", hora: "19:30–23:00" },
+      { date: "2026-06-22", tipo: "aula", titulo: "Revisão Geral da Disciplina", desc: "Consolidação de conceitos antes da 3ª avaliação.", hora: "19:30–23:00" },
+
+      // ✅ SEMINÁRIO 3 (29/06 - 1 semana antes da 3ª avaliação)
+      { date: "2026-06-29", tipo: "seminario", titulo: "Seminário Teórico–Prático 3", desc: "Integração sensório-motora e aplicações práticas.", hora: "19:30–23:00" },
+
+      // ✅ 3ª AVALIAÇÃO (06/07)
+      { date: "2026-07-06", tipo: "avaliacao", titulo: "3ª Avaliação Periódica (Teórica + Prática)", desc: "Teórica (0–5,0) + Prática (0–3,0).", hora: "19:30–23:00" },
+
+      // ✅ EXAME FINAL (marcado no calendário)
+      { date: "2026-07-13", tipo: "exame", titulo: "Exame Final (Teórica 0–7,0 / Prática 0–3,0)", desc: "Avaliação integral do programa da disciplina.", hora: "19:30–23:00" }
     ];
 
+    // Meses que serão exibidos no calendário
     const meses = [
       { ano: 2026, mes: 3, nome: "Março/2026" },
       { ano: 2026, mes: 4, nome: "Abril/2026" },
@@ -600,7 +896,7 @@
     ];
 
     // ========================
-    // 2) AJUDANTES
+    // 2) HELPERS
     // ========================
     const pad = (n) => String(n).padStart(2, "0");
     const iso = (y, m, d) => `${y}-${pad(m)}-${pad(d)}`;
@@ -612,98 +908,61 @@
     });
     cronograma.forEach(c => {
       if (!mapEventos.has(c.date)) mapEventos.set(c.date, []);
-      mapEventos.get(c.date).push({
-        date: c.date,
-        tipo: c.tipo,
-        titulo: c.titulo,
-        desc: c.desc,
-        hora: c.hora
-      });
+      mapEventos.get(c.date).push(c);
     });
 
-    const tipoToTagClass = (tipo) => {
-      const map = {
-        aula: "aula",
-        seminario: "seminario",
-        avaliacao: "avaliacao",
-        feriado: "feriado",
-        recesso: "recesso"
-      };
-      return map[tipo] || "";
-    };
+    const tipoToTagClass = (tipo) => ({
+      aula:"aula", seminario:"seminario", avaliacao:"avaliacao", exame:"exame",
+      feriado:"feriado", recesso:"recesso"
+    }[tipo] || "");
 
-    const tipoLabel = (tipo) => {
-      const map = {
-        aula: "Aula",
-        seminario: "Seminário",
-        avaliacao: "Avaliação",
-        feriado: "Feriado",
-        recesso: "Recesso"
-      };
-      return map[tipo] || "Evento";
-    };
+    const tipoLabel = (tipo) => ({
+      aula:"Aula", seminario:"Seminário", avaliacao:"Avaliação", exame:"Exame Final",
+      feriado:"Feriado", recesso:"Recesso"
+    }[tipo] || "Evento");
 
     // ========================
-    // 3) FILTROS
+    // 3) FILTRO
     // ========================
     let currentFilter = "all";
-
-    function updateFilter(tipo) {
+    function updateFilter(tipo){
       currentFilter = tipo;
 
-      // Atualizar botões de filtro
-      document.querySelectorAll(".filter-btn").forEach(btn => {
-        if (btn.dataset.filter === tipo) {
-          btn.classList.add("active");
-          btn.setAttribute("aria-pressed", "true");
-        } else {
-          btn.classList.remove("active");
-          btn.setAttribute("aria-pressed", "false");
-        }
+      document.querySelectorAll(".filter-btn").forEach(btn=>{
+        const on = btn.dataset.filter === tipo;
+        btn.classList.toggle("active", on);
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
       });
 
-      // Filtrar calendário
-      document.querySelectorAll(".day").forEach(day => {
+      document.querySelectorAll(".day").forEach(day=>{
         const tags = day.querySelectorAll(".tag");
-        const hasEvent = Array.from(tags).some(tag => {
-          const text = tag.textContent;
-          return tipo === "all" || text.toLowerCase().includes(tipo);
-        });
-        if (tipo === "all" || hasEvent || !tags.length) {
-          day.classList.remove("filtered-out");
-        } else {
-          day.classList.add("filtered-out");
-        }
+        if (!tags.length){ day.classList.remove("filtered-out"); return; }
+        if (tipo === "all"){ day.classList.remove("filtered-out"); return; }
+        const has = Array.from(tags).some(t => t.classList.contains(tipo));
+        day.classList.toggle("filtered-out", !has);
       });
 
-      // Filtrar tabela
-      document.querySelectorAll("tbody tr").forEach(row => {
-        const status = row.querySelector(".status");
-        if (!status) return;
-        const text = status.textContent;
-        if (tipo === "all" || text.toLowerCase().includes(tipo)) {
-          row.classList.remove("filtered-out");
-        } else {
-          row.classList.add("filtered-out");
-        }
+      document.querySelectorAll("tbody tr").forEach(row=>{
+        if (tipo === "all"){ row.classList.remove("filtered-out"); return; }
+        const badge = row.querySelector(".status");
+        const has = badge && badge.classList.contains("t-"+tipo);
+        row.classList.toggle("filtered-out", !has);
       });
     }
 
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        updateFilter(btn.dataset.filter);
-      });
+    document.querySelectorAll(".filter-btn").forEach(btn=>{
+      btn.addEventListener("click", ()=> updateFilter(btn.dataset.filter));
     });
 
     // ========================
     // 4) RENDER CALENDÁRIO
     // ========================
     const calendarEl = document.getElementById("calendar");
-    const dows = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+    const dows = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
 
-    meses.forEach(({ ano, mes, nome }) => {
-      const first = new Date(ano, mes - 1, 1);
-      const last = new Date(ano, mes, 0);
+    meses.forEach(({ano, mes, nome})=>{
+      const first = new Date(ano, mes-1, 1);
+      const last  = new Date(ano, mes, 0);
       const startDow = first.getDay();
       const totalDays = last.getDate();
 
@@ -717,7 +976,7 @@
 
       const dowEl = document.createElement("div");
       dowEl.className = "dow";
-      dows.forEach(d => {
+      dows.forEach(d=>{
         const x = document.createElement("div");
         x.textContent = d;
         dowEl.appendChild(x);
@@ -727,57 +986,57 @@
       const daysEl = document.createElement("div");
       daysEl.className = "days";
 
-      for (let i = 0; i < startDow; i++) {
+      for(let i=0;i<startDow;i++){
         const empty = document.createElement("div");
         empty.className = "day empty";
         daysEl.appendChild(empty);
       }
 
-      for (let day = 1; day <= totalDays; day++) {
+      for(let day=1; day<=totalDays; day++){
         const dateISO = iso(ano, mes, day);
         const cell = document.createElement("div");
         cell.className = "day";
-
-        const evs = mapEventos.get(dateISO) || [];
 
         const num = document.createElement("div");
         num.className = "day-num";
         num.textContent = day;
         cell.appendChild(num);
 
-        if (evs.length) {
+        const evs = (mapEventos.get(dateISO) || []).slice();
+
+        if (evs.length){
           const tags = document.createElement("div");
           tags.className = "tags";
 
-          const order = { recesso: 0, feriado: 1, avaliacao: 2, seminario: 3, aula: 4 };
-          evs.sort((a, b) => (order[a.tipo] ?? 99) - (order[b.tipo] ?? 99));
+          const order = { recesso:0, feriado:1, exame:2, avaliacao:3, seminario:4, aula:5 };
+          evs.sort((a,b)=>(order[a.tipo]??99)-(order[b.tipo]??99));
 
           const maxTags = 3;
-          evs.slice(0, maxTags).forEach(e => {
+          evs.slice(0,maxTags).forEach(e=>{
             const t = document.createElement("div");
             t.className = `tag ${tipoToTagClass(e.tipo)}`;
             t.textContent = `${tipoLabel(e.tipo)}: ${e.titulo}`;
             tags.appendChild(t);
           });
 
-          if (evs.length > maxTags) {
-            const t = document.createElement("div");
-            t.className = "tag";
-            t.textContent = `+${evs.length - maxTags} evento(s)`;
-            tags.appendChild(t);
+          if (evs.length > maxTags){
+            const more = document.createElement("div");
+            more.className = "tag";
+            more.textContent = `+${evs.length - maxTags} evento(s)`;
+            tags.appendChild(more);
           }
 
           cell.appendChild(tags);
 
-          const pref = evs.find(e => ["avaliacao", "seminario", "aula"].includes(e.tipo)) || evs[0];
-          if (pref && pref.desc) {
+          const pref = evs.find(e=>["exame","avaliacao","seminario","aula"].includes(e.tipo)) || evs[0];
+          if (pref.desc){
             const desc = document.createElement("div");
             desc.className = "desc";
             desc.textContent = pref.desc;
             cell.appendChild(desc);
           }
 
-          cell.title = evs.map(e => {
+          cell.title = evs.map(e=>{
             const h = e.hora ? ` (${e.hora})` : "";
             const d = e.desc ? ` — ${e.desc}` : "";
             return `${tipoLabel(e.tipo)}: ${e.titulo}${h}${d}`;
@@ -792,17 +1051,22 @@
     });
 
     // ========================
-    // 5) RENDERIZAR TABELA
+    // 5) RENDER TABELA (lista)
     // ========================
     const cronBody = document.getElementById("cron-body");
-    const uniqueDates = Array.from(new Set([...cronograma.map(c => c.date), "2026-04-20"])).sort();
 
-    uniqueDates.forEach(dateISO => {
+    // Inclui explicitamente o recesso 20/04 na lista
+    const datesList = Array.from(new Set([...cronograma.map(c=>c.date), "2026-04-20"])).sort();
+
+    datesList.forEach(dateISO=>{
       const evs = (mapEventos.get(dateISO) || []).slice();
-      const main = evs.filter(e => ["recesso", "feriado", "aula", "seminario", "avaliacao"].includes(e.tipo));
-      if (!main.length) return;
+      if (!evs.length) return;
 
-      const preferred = main.find(e => ["avaliacao", "seminario", "aula"].includes(e.tipo)) || main.find(e => e.tipo === "recesso") || main.find(e => e.tipo === "feriado") || main[0];
+      // escolhe o evento principal do dia para a linha
+      const order = { exame:0, avaliacao:1, seminario:2, aula:3, recesso:4, feriado:5 };
+      evs.sort((a,b)=>(order[a.tipo]??99)-(order[b.tipo]??99));
+
+      const main = evs.find(e=>["exame","avaliacao","seminario","aula","recesso","feriado"].includes(e.tipo)) || evs[0];
 
       const tr = document.createElement("tr");
 
@@ -813,44 +1077,47 @@
 
       const tdTime = document.createElement("td");
       tdTime.className = "col-time";
-      tdTime.textContent = preferred.hora || "—";
+      tdTime.textContent = main.hora || "—";
       tr.appendChild(tdTime);
 
       const tdCont = document.createElement("td");
 
       const status = document.createElement("span");
-      status.className = "status";
-
+      status.className = `status t-${main.tipo}`;
       const dot = document.createElement("span");
-      dot.className = `dot ${preferred.tipo}`;
+      dot.className = `dot ${main.tipo}`;
       status.appendChild(dot);
-
-      status.appendChild(document.createTextNode(`${tipoLabel(preferred.tipo)} — ${preferred.titulo}`));
-
+      status.appendChild(document.createTextNode(`${tipoLabel(main.tipo)} — ${main.titulo}`));
       tdCont.appendChild(status);
 
-      if (preferred.desc) {
+      if (main.desc){
         const p = document.createElement("div");
         p.style.marginTop = "6px";
-        p.style.color = "rgba(255,255,255,.92)";
+        p.style.color = "rgba(255,255,255,.85)";
         p.style.fontSize = "12px";
-        p.textContent = preferred.desc;
+        p.textContent = main.desc;
         tdCont.appendChild(p);
       }
 
-      const extra = main.filter(e => e !== preferred);
-      if (extra.length) {
-        const extraEl = document.createElement("div");
-        extraEl.style.marginTop = "6px";
-        extraEl.style.color = "rgba(255,255,255,.70)";
-        extraEl.style.fontSize = "11px";
-        extraEl.textContent = "Outras marcações: " + extra.map(e => `${tipoLabel(e.tipo)} — ${e.titulo}`).join(" • ");
-        tdCont.appendChild(extraEl);
+      // extras do mesmo dia (ex.: 11/05 tem feriado + seminário)
+      const extras = evs.filter(e=>e!==main && ["feriado","recesso","aula","seminario","avaliacao","exame"].includes(e.tipo));
+      if (extras.length){
+        const ex = document.createElement("div");
+        ex.style.marginTop = "6px";
+        ex.style.color = "rgba(255,255,255,.65)";
+        ex.style.fontSize = "11px";
+        ex.textContent = "Outras marcações: " + extras.map(e=>`${tipoLabel(e.tipo)} — ${e.titulo}`).join(" • ");
+        tdCont.appendChild(ex);
       }
 
       tr.appendChild(tdCont);
       cronBody.appendChild(tr);
     });
+
+    // ========================
+    // 6) estado inicial
+    // ========================
+    updateFilter("all");
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d1555f6f276625e',t:'MTc3MTY2NzM4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d22c619f3c17e8c',t:'MTc3MTgwODI5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+                                                                     </html>
