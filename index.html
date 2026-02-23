@@ -3,277 +3,195 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-  <title>UEM 2026 — Anatomia Aplicada (Ed. Física Noturno)</title>
+  <title>UEM 2026 — Anatomia Aplicada</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap');
 
     :root {
-      --bg:#050a1f;
-      --card:#0d1425;
-      --text:#f5f7ff;
-      --text-secondary:#d4daf5;
-      --muted:#8f99c8;
-      --aula:#00f0ff;
-      --seminario:#c084fc;
-      --avaliacao:#ff2e71;
-      --exame:#10b981;
-      --holiday:#ff4655;
-      --recesso:#fb923c;
-      --radius: 24px;
+      --bg:#050a1f; --card:#0d1425; --text:#f5f7ff; --text-secondary:#d4daf5;
+      --aula:#00f0ff; --seminario:#c084fc; --avaliacao:#ff2e71; --exame:#10b981;
+      --feriado:#ff4655; --recesso:#fb923c; --muted:#8f99c8;
+      --radius: 20px;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    html, body { margin: 0; width: 100%; min-height: 100vh; }
-    
     body {
       font-family: "Outfit", -apple-system, sans-serif;
-      background: radial-gradient(circle at 8% 20%, rgba(0,240,255,0.15), transparent 40%),
-                  linear-gradient(180deg, #050a1f 0%, #0d1425 100%);
-      color: var(--text);
-      padding: clamp(10px, 4vw, 32px);
-      line-height: 1.6;
-      overflow-x: hidden;
+      background: radial-gradient(circle at 8% 20%, rgba(0,240,255,0.1), transparent 40%), var(--bg);
+      color: var(--text); padding: clamp(10px, 4vw, 30px); margin: 0; line-height: 1.5;
     }
 
     .wrap { max-width: 1400px; margin: 0 auto; }
     
     .hero {
-      border: 1px solid rgba(0,240,255,0.3);
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: var(--radius);
-      padding: clamp(15px, 5vw, 40px);
-      margin-bottom: 24px;
+      border: 1px solid rgba(0,240,255,0.2); background: rgba(255,255,255,0.03);
+      padding: 24px; border-radius: var(--radius); margin-bottom: 24px;
     }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(18px, 5vw, 36px);
-      background: linear-gradient(135deg, #00f0ff 0%, #c084fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 900;
-    }
+    h1 { font-size: clamp(18px, 5vw, 30px); margin: 0; color: var(--aula); font-weight: 900; }
+    .sub { font-size: 14px; margin-top: 10px; color: var(--text-secondary); opacity: 0.8; }
 
-    .sub { font-size: clamp(12px, 2.5vw, 16px); color: var(--text-secondary); margin-top: 15px; }
-
-    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
-    .chip {
-      font-size: 12px; background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.3);
-      padding: 8px 12px; border-radius: 12px; font-weight: 600;
-    }
-
-    /* Filtros Responsivos */
-    .toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 25px; align-items: center; }
+    /* Filtros Mobile-Friendly */
+    .toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
     .filter-btn {
-      padding: 10px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-      color: white; border-radius: 10px; cursor: pointer; font-size: 13px; font-family: inherit;
-      transition: 0.3s; min-height: 44px; /* Tamanho Apple para toque */
+      padding: 10px 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: white; border-radius: 10px; cursor: pointer; font-size: 12px; font-family: inherit;
     }
     .filter-btn.active { background: var(--aula); color: #000; font-weight: 700; }
 
-    /* Layout em Grade */
-    .grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 30px; }
-    @media (min-width: 1024px) { .grid { grid-template-columns: 1.35fr 0.65fr; } }
+    /* Layout Adaptável */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    @media (min-width: 1024px) { .grid { grid-template-columns: 1.3fr 0.7fr; } }
 
-    .card { background: var(--card); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: clamp(15px, 4vw, 28px); }
-    h2 { font-size: 14px; color: var(--aula); text-transform: uppercase; letter-spacing: 1px; margin-top: 0; }
+    .card { background: var(--card); border: 1px solid rgba(255,255,255,0.05); border-radius: 18px; padding: 20px; }
+    h2 { font-size: 14px; color: var(--aula); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
 
-    /* Calendário */
-    .calendar { display: grid; grid-template-columns: 1fr; gap: 20px; }
-    .month { border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden; background: rgba(0,0,0,0.2); }
-    .month-header { display: flex; justify-content: space-between; padding: 12px 16px; background: rgba(255,255,255,0.05); }
-    .dow { display: grid; grid-template-columns: repeat(7, 1fr); background: rgba(255,255,255,0.03); text-align: center; font-size: 11px; font-weight: 800; color: var(--muted); }
-    .dow div { padding: 10px 0; border-right: 1px solid rgba(255,255,255,0.05); }
+    /* Calendário Estilizado */
+    .month { border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; margin-bottom: 20px; }
+    .month-header { padding: 10px; background: rgba(255,255,255,0.05); font-weight: 800; text-align: center; }
+    .dow { display: grid; grid-template-columns: repeat(7, 1fr); background: rgba(255,255,255,0.02); text-align: center; font-size: 10px; font-weight: 900; }
     .days { display: grid; grid-template-columns: repeat(7, 1fr); }
-    .day { min-height: clamp(60px, 10vw, 90px); border-right: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 5px; }
-    .day.empty { background: rgba(255,255,255,0.02); }
+    .day { min-height: 80px; border: 0.5px solid rgba(255,255,255,0.05); padding: 4px; position: relative; }
+    .day-num { font-size: 11px; color: var(--muted); font-weight: 800; }
     .day.filtered-out { opacity: 0.15; }
-    .day-num { font-size: 12px; font-weight: 800; color: var(--muted); }
 
-    /* Tags no Calendário */
-    .tags { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
-    .tag { font-size: 9px; padding: 2px 4px; border-radius: 4px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-left: 3px solid; }
+    .tags { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
+    .tag { font-size: 8px; padding: 2px 4px; border-radius: 4px; font-weight: 700; border-left: 2px solid; white-space: nowrap; overflow: hidden; }
     .tag.aula { background: rgba(0,240,255,0.1); color: var(--aula); border-color: var(--aula); }
-    .tag.avaliacao { background: rgba(255,46,113,0.1); color: var(--avaliacao); border-color: var(--avaliacao); }
     .tag.seminario { background: rgba(192,132,252,0.1); color: var(--seminario); border-color: var(--seminario); }
-    .tag.feriado { background: rgba(255,70,85,0.1); color: #ff8899; border-color: var(--holiday); }
-    .tag.recesso { background: rgba(251,146,60,0.1); color: var(--recesso); border-color: var(--recesso); }
+    .tag.avaliacao { background: rgba(255,46,113,0.1); color: var(--avaliacao); border-color: var(--avaliacao); }
 
-    /* Tabela de Cronograma Lateral */
+    /* Tabela de Cronograma */
     .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    table { width: 100%; border-collapse: collapse; min-width: 450px; }
-    th { text-align: left; font-size: 11px; color: var(--aula); padding: 12px; border-bottom: 2px solid rgba(255,255,255,0.1); }
-    td { padding: 12px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
-    .status { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 12px; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-    tr.filtered-out { display: none; }
+    table { width: 100%; border-collapse: collapse; min-width: 400px; }
+    th { text-align: left; font-size: 11px; color: var(--aula); padding: 10px; border-bottom: 2px solid rgba(255,255,255,0.1); }
+    td { padding: 10px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
 
-    /* Seção de Notas (Avaliações) */
-    .eval-section { border-left: 3px solid var(--aula); background: rgba(0,240,255,0.05); padding: 15px; border-radius: 0 12px 12px 0; margin-bottom: 15px; }
-    .eval-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 15px 0; }
-    .eval-item { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
-    .eval-label { font-size: 10px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 5px; }
-    .eval-score { font-size: 18px; font-weight: 900; color: #fb923c; }
+    /* Seção de Notas Detalhada */
+    .eval-box { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
+    .eval-box span { font-size: 10px; color: var(--muted); display: block; margin-bottom: 5px; }
+    .eval-box b { font-size: 18px; color: #fb923c; }
 
-    @media print { .toolbar, .print-btn { display: none; } body { background: #fff; color: #000; } }
+    @media print { .toolbar { display: none; } body { background: white; color: black; } }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <section class="hero">
-      <h1>UEM — Anatomia Humana Aplicada 2026</h1>
-      <p class="sub"><strong>Docente:</strong> Profª Dra. Cláudia Pinheiro • <strong>Aulas:</strong> Segundas (19:30–23:00) • <strong>Período:</strong> 09/03 a 11/07/2026</p>
-      
-      <div class="chips">
-        <div class="chip">Seminários: 27/04, 25/05, 29/06</div>
-        <div class="chip">Avaliações: 27/04, 01/06, 06/07</div>
-        <div class="chip">Exame: 13/07</div>
-      </div>
-
-      <div class="toolbar">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="aula">Aulas</button>
-        <button class="filter-btn" data-filter="seminario">Seminários</button>
-        <button class="filter-btn" data-filter="avaliacao">Avaliações</button>
-        <button class="filter-btn" data-filter="feriado">Feriados/Recessos</button>
-        <button class="filter-btn" style="margin-left: auto; border-color: var(--aula); color: var(--aula);" onclick="window.print()">Imprimir</button>
-      </div>
-    </section>
-
-    <div class="grid">
-      <div class="card">
-        <h2>🗓️ Calendário Completo</h2>
-        <div id="calendar" class="calendar"></div>
-      </div>
-
-      <aside class="card">
-        <h2>📌 Cronograma</h2>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr><th>Data</th><th>Atividade</th></tr>
-            </thead>
-            <tbody id="cron-body"></tbody>
-          </table>
-        </div>
-      </aside>
+<div class="wrap">
+  <div class="hero">
+    <h1>UEM — Anatomia Humana Aplicada 2026</h1>
+    <p class="sub">Docente: Profª Dra. Cláudia Pinheiro • Segundas (19:30–23:00) • 09/03 a 11/07</p>
+    
+    <div class="toolbar">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="aula">Aulas</button>
+      <button class="filter-btn" data-filter="seminario">Seminários</button>
+      <button class="filter-btn" data-filter="avaliacao">Avaliações</button>
     </div>
+  </div>
 
-    <div class="card" style="margin-top: 24px;">
-      <h2>📋 Critérios de Avaliação</h2>
-      <div class="eval-section">
-        <div class="eval-grid">
-          <div class="eval-item"><span class="eval-label">Teórica</span><div class="eval-score">0,0 — 5,0</div></div>
-          <div class="eval-item"><span class="eval-label">Prática</span><div class="eval-score">0,0 — 3,0</div></div>
-          <div class="eval-item"><span class="eval-label">Seminário</span><div class="eval-score">0,0 — 2,0</div></div>
-        </div>
-        <p style="font-size: 11px; color: var(--muted);">* Exame final: Teórica (0-7,0) + Prática (0-3,0)</p>
+  <div class="grid">
+    <div class="card">
+      <h2>🗓️ Calendário Acadêmico</h2>
+      <div id="calendar-root"></div>
+    </div>
+    <div class="card">
+      <h2>📌 Próximas Atividades</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Data</th><th>Atividade</th></tr></thead>
+          <tbody id="cron-body"></tbody>
+        </table>
       </div>
     </div>
   </div>
 
-  <script>
-    // TODOS OS DADOS ORIGINAIS PRESERVADOS
-    const eventosUEM = [
-      { date: "2026-04-03", tipo: "feriado", titulo: "Paixão de Cristo" },
-      { date: "2026-04-04", tipo: "recesso", titulo: "Recesso Acadêmico" },
-      { date: "2026-04-05", tipo: "feriado", titulo: "Páscoa" },
-      { date: "2026-04-20", tipo: "recesso", titulo: "Recesso Acadêmico" },
-      { date: "2026-04-21", tipo: "feriado", titulo: "Tiradentes" },
-      { date: "2026-05-01", tipo: "feriado", titulo: "Dia do Trabalho" },
-      { date: "2026-05-02", tipo: "recesso", titulo: "Recesso Acadêmico" },
-      { date: "2026-05-10", tipo: "feriado", titulo: "Aniversário de Maringá" },
-      { date: "2026-05-11", tipo: "feriado", titulo: "Reconhecimento da UEM" },
-      { date: "2026-06-04", tipo: "feriado", titulo: "Corpus Christi" }
-    ];
+  <div class="card" style="margin-top:24px">
+    <h2>📋 Detalhamento de Notas e Faltas</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;">
+      <div class="eval-box"><span>Prova Teórica</span><b>0,0 — 5,0</b></div>
+      <div class="eval-box"><span>Prova Prática</span><b>0,0 — 3,0</b></div>
+      <div class="eval-box"><span>Seminário Total</span><b>0,0 — 2,0</b></div>
+    </div>
+    
+    <div style="margin-top: 20px; padding: 15px; background: rgba(0,240,255,0.05); border-radius: 12px; font-size: 13px; border-left: 4px solid var(--aula);">
+      <strong>Como é calculado o Seminário (2,0 pts):</strong><br>
+      1. Avaliação Individual (1,0 pt): (Autoavaliação + Pares + Professor) ÷ 3.<br>
+      2. Avaliação do Grupo (1,0 pt): Nota atribuída ao desempenho coletivo.<br><br>
+      <strong>Regra para Falta Justificada (Atestado):</strong><br>
+      O aluno que faltar no dia do seminário e justificar terá o peso redistribuído: <br>
+      - Prova Teórica: <b>0,0 — 6,0</b> | Prova Prática: <b>0,0 — 4,0</b>.
+    </div>
+  </div>
+</div>
 
-    const cronograma = [
-      { date: "2026-03-09", tipo: "aula", titulo: "Introdução à Anatomia Humana", desc: "Nomenclatura, posição e variações." },
-      { date: "2026-03-16", tipo: "aula", titulo: "Planos e Eixos de Seção", desc: "Delimitação e eixos de movimento." },
-      { date: "2026-03-23", tipo: "aula", titulo: "Osteologia: Axial e Apendicular", desc: "Esqueleto e acidentes ósseos." },
-      { date: "2026-03-30", tipo: "aula", titulo: "Artrologia: Articulações", desc: "Classificação morfológica e funcional." },
-      { date: "2026-04-06", tipo: "aula", titulo: "Sistema Muscular: Princípios", desc: "Estrutura e dinâmica da contração." },
-      { date: "2026-04-13", tipo: "aula", titulo: "Sistema Muscular: MMSS e MMII", desc: "Anatomia regional dos membros." },
-      { date: "2026-04-13", tipo: "seminario", titulo: "Seminário Teórico–Prático 1", desc: "Aparelho locomotor e gesto motor." },
-      { date: "2026-04-27", tipo: "avaliacao", titulo: "1ª Avaliação Periódica", desc: "Teórica (0–5,0) + Prática (0–3,0)." },
-      { date: "2026-05-04", tipo: "aula", titulo: "Músculos do Tronco", desc: "Tórax, abdome e dorso." },
-      { date: "2026-05-11", tipo: "aula", titulo: "Sistema Nervoso: Introdução", desc: "Encéfalo e medula espinal." },
-      { date: "2026-05-18", tipo: "aula", titulo: "Sistema Nervoso Periférico", desc: "Nervos e plexos braquial/lombossacral." },
-      { date: "2026-05-25", tipo: "seminario", titulo: "Seminário Teórico–Prático 2", desc: "Neuroanatomia e estudo de casos." },
-      { date: "2026-06-01", tipo: "avaliacao", titulo: "2ª Avaliação Periódica", desc: "Teórica (0–5,0) + Prática (0–3,0)." },
-      { date: "2026-06-08", tipo: "aula", titulo: "Vias Aferentes e Propriocepção", desc: "Fusos e órgãos tendinosos." },
-      { date: "2026-06-15", tipo: "aula", titulo: "Vias Eferentes Somáticas", desc: "Inervação motora e reflexos." },
-      { date: "2026-06-22", tipo: "aula", titulo: "Revisão Geral da Disciplina", desc: "Consolidação de conceitos." },
-      { date: "2026-06-29", tipo: "seminario", titulo: "Seminário Teórico–Prático 3", desc: "Integração sensório-motora." },
-      { date: "2026-07-06", tipo: "avaliacao", titulo: "3ª Avaliação Periódica", desc: "Teórica (0–5,0) + Prática (0–3,0)." },
-      { date: "2026-07-13", tipo: "exame", titulo: "Exame Final", desc: "Programa integral da disciplina." }
-    ];
+<script>
+  // DADOS COMPLETOS EXTRAÍDOS DAS IMAGENS
+  const eventos = [
+    { d: "2026-03-09", t: "aula", n: "Introdução à Anatomia", s: "Nomenclatura e posição" },
+    { d: "2026-03-16", t: "aula", n: "Planos e Eixos", s: "Eixos de movimento" },
+    { d: "2026-03-23", t: "aula", n: "Osteologia", s: "Axial e Apendicular" },
+    { d: "2026-03-30", t: "aula", n: "Artrologia", s: "Articulações" },
+    { d: "2026-04-06", t: "aula", n: "Sistema Muscular", s: "Contração muscular" },
+    { d: "2026-04-13", t: "seminario", n: "Seminário 1", s: "Aparelho locomotor" },
+    { d: "2026-04-27", t: "avaliacao", n: "1ª Avaliação", s: "Teórica (5.0) + Prática (3.0)" },
+    { d: "2026-05-11", t: "aula", n: "Sistema Nervoso", s: "Encéfalo e medula" },
+    { d: "2026-05-18", t: "aula", n: "Nervoso Periférico", s: "Nervos e plexos" },
+    { d: "2026-05-25", t: "seminario", n: "Seminário 2", s: "Neuroanatomia" },
+    { d: "2026-06-01", t: "avaliacao", n: "2ª Avaliação", s: "Teórica (5.0) + Prática (3.0)" },
+    { d: "2026-06-08", t: "aula", n: "Propriocepção", s: "Fusos e órgãos tendinosos" },
+    { d: "2026-06-22", t: "aula", n: "Revisão Geral", s: "Consolidação de conceitos" },
+    { d: "2026-06-29", t: "seminario", n: "Seminário 3", s: "Integração sensório-motora" },
+    { d: "2026-07-06", t: "avaliacao", n: "3ª Avaliação", s: "Teórica (5.0) + Prática (3.0)" },
+    { d: "2026-07-13", t: "exame", n: "Exame Final", s: "Programa Integral" }
+  ];
 
-    const meses = [
-      { ano: 2026, mes: 3, nome: "Março" }, { ano: 2026, mes: 4, nome: "Abril" },
-      { ano: 2026, mes: 5, nome: "Maio" }, { ano: 2026, mes: 6, nome: "Junho" },
-      { ano: 2026, mes: 7, nome: "Julho" }
-    ];
+  const meses = [
+    { n: "Março", m: 3 }, { n: "Abril", m: 4 }, { n: "Maio", m: 5 }, { n: "Junho", m: 6 }, { n: "Julho", m: 7 }
+  ];
 
-    // Lógica de Renderização
-    const mapEv = new Map();
-    [...eventosUEM, ...cronograma].forEach(e => {
-      if(!mapEv.has(e.date)) mapEv.set(e.date, []);
-      mapEv.get(e.date).push(e);
-    });
+  function build() {
+    const root = document.getElementById('calendar-root');
+    const cron = document.getElementById('cron-body');
 
-    const calendarEl = document.getElementById("calendar");
-    const cronBody = document.getElementById("cron-body");
-
-    meses.forEach(m => {
-      const first = new Date(m.ano, m.mes-1, 1).getDay();
-      const last = new Date(m.ano, m.mes, 0).getDate();
-      
-      let html = `<div class="month"><div class="month-header"><strong>${m.nome}</strong> <span>${m.ano}</span></div>`;
+    meses.forEach(mes => {
+      let html = `<div class="month"><div class="month-header">${mes.n} 2026</div>`;
       html += `<div class="dow"><div>D</div><div>S</div><div>T</div><div>Q</div><div>Q</div><div>S</div><div>S</div></div><div class="days">`;
+      
+      const start = new Date(2026, mes.m - 1, 1).getDay();
+      const total = new Date(2026, mes.m, 0).getDate();
 
-      for(let i=0; i<first; i++) html += `<div class="day empty"></div>`;
+      for(let i=0; i<start; i++) html += `<div class="day empty"></div>`;
 
-      for(let d=1; d<=last; d++) {
-        const iso = `${m.ano}-${String(m.mes).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-        const evs = mapEv.get(iso) || [];
-        html += `<div class="day" data-date="${iso}"><div class="day-num">${d}</div><div class="tags">`;
-        evs.forEach(e => {
-          html += `<span class="tag ${e.tipo}">${e.titulo}</span>`;
-          // Preenche a tabela lateral apenas se for aula/avaliação relevante
-          if(m.mes >= 3 && (e.tipo !== 'feriado' && e.tipo !== 'recesso' || d === 20 && m.mes === 4)) {
-             if(d === 1 || evs[0] === e) { // Evita duplicar linhas na tabela para o mesmo dia
-               const row = document.createElement("tr");
-               row.className = `row-${e.tipo}`;
-               row.innerHTML = `<td>${d}/${m.mes}</td><td><div class="status t-${e.tipo}"><span class="dot ${e.tipo}" style="background:var(--${e.tipo})"></span> ${e.titulo}</div><div style="font-size:11px; opacity:0.7; margin-top:4px">${e.desc || ''}</div></td>`;
-               cronBody.appendChild(row);
-             }
-          }
+      for(let i=1; i<=total; i++) {
+        const iso = `2026-${String(mes.m).padStart(2,'0')}-${String(i).padStart(2,'0')}`;
+        const items = eventos.filter(e => e.d === iso);
+        html += `<div class="day" data-iso="${iso}"><b>${i}</b><div class="tags">`;
+        items.forEach(ev => {
+          html += `<span class="tag ${ev.t}">${ev.n}</span>`;
+          cron.innerHTML += `<tr class="row-${ev.t}"><td>${i}/${mes.m}</td><td><b>${ev.n}</b><br><small>${ev.s}</small></td></tr>`;
         });
         html += `</div></div>`;
       }
-      html += `</div></div>`;
-      calendarEl.innerHTML += html;
+      root.innerHTML += html + `</div></div>`;
     });
+  }
 
-    // Filtros
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const f = btn.dataset.filter;
-        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        document.querySelectorAll(".day").forEach(d => {
-          const has = f === 'all' || Array.from(d.querySelectorAll(".tag")).some(t => t.classList.contains(f));
-          d.classList.toggle("filtered-out", !has);
-        });
-
-        document.querySelectorAll("#cron-body tr").forEach(r => {
-          const type = r.className.replace('row-', '');
-          r.style.display = (f === 'all' || type === f) ? "table-row" : "none";
-        });
-      });
+  // Lógica de Filtro
+  document.addEventListener('click', e => {
+    if(!e.target.classList.contains('filter-btn')) return;
+    const f = e.target.dataset.filter;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b === e.target));
+    
+    document.querySelectorAll('.day').forEach(d => {
+      const has = f === 'all' || Array.from(d.querySelectorAll('.tag')).some(t => t.classList.contains(f));
+      d.classList.toggle('filtered-out', !has);
     });
-  </script>
+    document.querySelectorAll('#cron-body tr').forEach(r => {
+      r.style.display = (f === 'all' || r.className.includes(f)) ? '' : 'none';
+    });
+  });
+
+  build();
+</script>
 </body>
 </html>
